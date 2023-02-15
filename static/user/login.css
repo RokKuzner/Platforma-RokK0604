@@ -1,0 +1,11 @@
+.form-signin{
+    max-width: 330px;
+    padding: 15px;
+}
+
+body, html{
+    height: 100%;
+}
+body {
+    display: flex;
+}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "room/deleteUser.html" %}
+<main class="">
+    <h1>Room: {{ room_id }}</h1>
+    <h3>Users in room</h3>
+    <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
+            {% for user in users %}
+              <div class="col">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h5 class="d-inline">{{ user }}</h5>
+                      <button class="btn p-0" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                <i class="fa-sharp fa-solid fa-trash"></i>
+            </button>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+    <h3>Chat</h3>
+{% for message in messages %}
+    {% if message.username == current_user %}
+    <p style="text-align: right;"><strong>{{ message.username }}</strong> at {{ message.date }}: {{ message.text }}</p>
+    {% else %}
+    <p style="text-align: left;"><strong>{{ message.username }}</strong> at {{ message.date }}: {{ message.text }}</p>
+    {% endif %}
+{% endfor %}
+
+<form method="post" action="/room/message/">
+  <div class="mb-3">
+    <label class="form-label">Message</label>
+    <input type="text" class="form-control" name="blub">
+  </div>
+  <button type="submit" class="btn btn-primary">Send message</button>
+</form>
+</main>
+
+{% endblock %}

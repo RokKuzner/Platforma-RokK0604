@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2>Dashboard moje aplikacije</h2>
+<h3>Živjo, {{ name }}! Star si {{ age }} let.</h3>
+<p>Tukaj bom lahko urejal posamezne elemente.</p>
+<a href="https://404.si">404.si</a>
+<p>Prijavljen: {{ logged_in }}</p>
+<p>Trenutni user: {{ current_user }}</p>
+<p><a class="btn btn-primary" href="/user/logout">Odjava</a></p>
+<p><a href="/room/add/">Dodaj novo sobo</a></p>
+<ul>
+    {% for room in rooms %}
+        <li>
+            Soba: <a href="/room/{{ room[0] }}/">{{ room[0] }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<ul>
+    {% for dan in dnevi %}
+        <li>
+            {% if loop.index0 == random_day %}
+                <strong>{{ dan }}</strong>
+            {% else %}
+                {{ dan }}
+            {% endif %}            
+        </li>
+    {% endfor %}
+</ul>
+{{ random_day }}
+{{ rooms }}
+{{ users }}
+{% endblock %}

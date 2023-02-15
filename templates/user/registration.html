@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Registration{% endblock %}
+{% block head %}
+    <link href="/static/user/login.css" rel="stylesheet">
+{% endblock %}
+    
+{% block content %}
+
+    <main class="form-signin w-100 m-auto">
+        <form method="post" action="/user/registration">
+            <h1 class="h3 mb-3 fw-normal">Registration</h1>            
+            <div class="form-floating mb-2">
+                <input type="text" name="username" class="form-control" placeholder="username">
+                <label for="username">Username</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="email" name="email" class="form-control" placeholder="email">
+                <label for="email">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Register</button>
+            <p>Already have an account? Login <a href="/user/login">here</a>.</p>
+        </form>
+    </main>
+
+{% endblock %}

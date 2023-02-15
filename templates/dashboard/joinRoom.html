@@ -1,0 +1,21 @@
+<div class="modal fade" id="joinRoomModal" tabindex="-1" aria-labelledby="joinRoomModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="joinRoomModalLabel">Join room with code</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          
+        <form method="post" action="/room/join/">
+          <div class="mb-3">
+            <label for="input-room-name" class="form-label">Room code</label>
+            <input type="text" class="form-control" id="input-room-name" name="room">
+          </div>
+          <button type="submit" class="btn btn-primary float-end">Join</button>
+        </form>
+          
+      </div>
+    </div>
+  </div>
+</div>

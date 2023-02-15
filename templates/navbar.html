@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand">Moja platforma</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#grace-navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="grace-navbar">
+            <div class="d-inline-flex justify-content-between w-100">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="/">Dashboard</a>
+                </div>
+                <div class="navbar-nav">
+                    <span class="navbar-text">
+                      user: {{ current_user }}
+                    </span>
+                    <a class="nav-link btn btn-primary"href="/user/logout">logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,22 @@
+<div class="modal fade" id="addRoomModal" tabindex="-1" aria-labelledby="addRoomModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addRoomModalLabel">Create room</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          
+        <form method="post" action="/room/create/">
+          <div class="mb-3">
+            <label for="input-room-name" class="form-label">Room name</label>
+            <input type="text" class="form-control" id="input-room-name" name="name" aria-describedby="nameHelp">
+            <div id="nameHelp" class="form-text">Write something nice.</div>
+          </div>
+          <button type="submit" class="btn btn-primary float-end">Create room</button>
+        </form>
+          
+      </div>
+    </div>
+  </div>
+</div>

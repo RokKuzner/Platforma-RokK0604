@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <link href="/static/dashboard/index.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+    {% include "dashboard/addRoom.html" %}
+    {% include "dashboard/joinRoom.html" %}
+    
+    <div>
+        <div class="mb-2">
+            <h1 class="d-inline">Rooms</h1>
+            <button class="btn room-add-btn mx-2" data-bs-toggle="modal" data-bs-target="#addRoomModal">
+                <i class="fa-regular fa-square-plus"></i>
+            </button>
+            <button class="btn room-add-btn mx-2" data-bs-toggle="modal" data-bs-target="#joinRoomModal">
+                <i class="fa-sharp fa-solid fa-right-to-bracket"></i>
+            </button>
+        </div>
+            
+        <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
+            {% for room in rooms %}
+              <div class="col">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="card-title">
+                        <h5 class="d-inline">
+                            <a href="/room/{{room[0]}}">{{ room[1] }}</a>
+                        </h5>
+                        <small class="text-muted">#{{ room[0] }}</small>
+                    </div>
+                        
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            {% for neki in test %}
+                            {{ neki }}
+                        {% endfor %}
+        </div>
+        
+    </div>
+
+{% endblock %}
