@@ -140,8 +140,11 @@ def update_tictactoe(game_id):
 
     # V bazo shranimo spremembe
 
-    next_player = game['player_x'] if game['next_player'] == game[
-        'player_o'] else game['player_o']
+    if game['next_player'] == game['player_o']:
+        next_player = game['player_x']
+    else:
+        next_player = game['player_o']
+
     db.update_tictactoe_state(game_id, game['state'], next_player)
     print("update state")
 

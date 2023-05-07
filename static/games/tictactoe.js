@@ -46,12 +46,16 @@ function mouseMoved() {
     }
 }
 
-function mouseClicked() {
+async function mouseClicked() {
      let [y, x] = detectPostion(mouseX, mouseY)
     // if polje že ima X ali O potem nič ne rišemo
     // preverimo, če smo na vrsti
 
     // TODO: preverimo, če še ni konec igre!
+
+    console.log(next_player)
+
+    await getTictactoe()
   
     if (current_user == next_player && ended == 0) {
         console.log("smo na potezi")
@@ -166,8 +170,8 @@ async function getTictactoe() {
 
 getTictactoe()
 
-function updateTictactoe() {
-    fetch("https://platforma-rokk0604.team-grace.repl.co/game/tictactoe/" + game_id + "/update", {
+async function updateTictactoe() {
+    await fetch("https://platforma-rokk0604.team-grace.repl.co/game/tictactoe/" + game_id + "/update", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -179,3 +183,6 @@ function updateTictactoe() {
 console.log("TEST: " + current_user)
 console.log("TEST 2: " + game_id)
 
+setInterval(async function () {
+  await getTictactoe();
+}, 1000);
