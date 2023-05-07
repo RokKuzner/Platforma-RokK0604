@@ -4,16 +4,16 @@
       {
         "id": "8ef292b5-7e7c-4f4a-8c68-02050b6281f7",
         "line": 58,
-        "version": 304,
-        "index": 835
+        "version": 287,
+        "index": 914
       }
     ],
     "templates/navbar.html": [
       {
         "id": "5a617de4-b2f0-4ff1-8427-c09547a871c1",
         "line": 10,
-        "version": 20,
-        "index": 465
+        "version": 1,
+        "index": 481
       }
     ]
   }

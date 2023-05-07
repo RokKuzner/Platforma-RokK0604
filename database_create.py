@@ -36,13 +36,28 @@ date TEXT
 )
 """
 
-c.execute(MESSAGES)
+TICTACTOE = """
+CREATE TABLE IF NOT EXISTS tictactoe(
+game_id TEXT,
+room_id TEXT,
+player_x TEXT,
+player_o TEXT,
+state TEXT,
+next_player TEXT,
+winner TEXT,
+ended BOOLEAN
+)
+"""
+c.execute(TICTACTOE)
+
+ADD_DEMO_TICTACTOE = """
+INSERT INTO tictactoe VALUES("tictactoe_2", "abc123", "miha", "test", '{"state": [["#", "#", "#"], ["#", "#", "#"], ["#", "#", "#"]]}', "miha", NULL, false)
+"""
+c.execute(ADD_DEMO_TICTACTOE)
 
 ADD_DEMO_MESSAGE = """
 INSERT INTO messages VALUES("test", "Moje sporočilo", "9860", "2023-01-01")
 """
-
-c.execute(ADD_DEMO_MESSAGE)
 
 ADD_DEMO_ROOM = """
 INSERT INTO rooms VALUES(
@@ -61,15 +76,17 @@ INSERT INTO user_in_room VALUES(
 "abc123", "miha"
 )
 """
-#c.execute(USERS)
-# c.execute(ROOMS)
-#c.execute(USER_IN_ROOM)
+
+c.execute(USERS)
+c.execute(ROOMS)
+c.execute(USER_IN_ROOM)
+c.execute(MESSAGES)
 #c.execute(ADD_DEMO_USER)
 # c.execute(ADD_DEMO_ROOM)
 #c.execute(ADD_USER_INTO_ROOM)
+# c.execute(ADD_DEMO_MESSAGE)
 
 # Ne pozabimo v bazo podatke shraniti
 # in povezavo do baze zapreti.
 conn.commit()
 conn.close()
-

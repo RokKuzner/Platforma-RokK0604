@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block head %}
+    <script>
+        let current_user = "{{ current_user }}"
+        let game_id = "{{ game_id }}"
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/addons/p5.sound.min.js"></script>
+    <script type="text/javascript" src="/static/games/tictactoe.js"></script>
+{% endblock %}
+
+{% block content %}
+{% endblock %}

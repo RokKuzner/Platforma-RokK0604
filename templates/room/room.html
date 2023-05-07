@@ -1,7 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<script>
+
+    var userToDelete = '';
+
+    function rememberUser(user) {
+        userToDelete = user;
+        console.log(userToDelete)
+    }
+
+    function removeUser(){
+        fetch('/room/{{ room_id }}/remove/' + userToDelete, {
+            method: 'POST',
+            body: JSON.stringify({'user': userToDelete})
+        })
+    }
+    
+</script>
+
 {% include "room/deleteUser.html" %}
+
 <main class="">
     <h1>Room: {{ room_id }}</h1>
     <h3>Users in room</h3>
@@ -10,8 +30,8 @@
               <div class="col">
                 <div class="card h-100">
                   <div class="card-body">
-                    <h5 class="d-inline">{{ user }}</h5>
-                      <button class="btn p-0" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+                    <h5 class="d-inline">{{ user[0] }}</h5>
+                      <button class="btn p-0" data-bs-toggle="modal" data-bs-target="#deleteUserModal" onclick="rememberUser('{{ user[0] }}')">
                 <i class="fa-sharp fa-solid fa-trash"></i>
             </button>
                   </div>
@@ -19,6 +39,39 @@
               </div>
             {% endfor %}
         </div>
+
+    <h3>Tictactoes</h3>
+    <a href="/game/tictactoe/create/{{room_id}}" class="btn btn-primary">Start new game</a>
+    <a href="/game/tictactoe/delete/{{room_id}}" class="btn btn-secondary">Delete all games</a>
+    <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
+    {% for tictactoe in tictactoes %}
+        <div class="col">
+            <div class="card text-center">
+                <div class="card-header">
+                    Tictactoe (#{{tictactoe[0]}})
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Igra</h5>
+                    <p class="card-text">Player X: {{tictactoe[1]}}</p>
+                    <p class="card-text">Player O: {{tictactoe[2]}}</p>
+                    {% if tictactoe[1] == "" or tictactoe[2] == "" %}
+                        <a href="/game/tictactoe/{{room_id}}/{{tictactoe[0]}}/join" class="btn btn-primary">Join this game</a>
+                    {% else %}
+                        <a href="/game/tictactoe/{{tictactoe[0]}}" class="btn btn-primary">Watch/Play game</a>
+                    {% endif %}
+                    <a
+                        href="/game/tictactoe/delete/{{room_id}}/{{tictactoe[0]}}"
+                        class="btn btn-secondary">Delete this game</a>
+                    
+                </div>
+                <div class="card-footer text-body-secondary">
+                    Status: status igre
+                </div>
+            </div>
+              </div>
+            {% endfor %}
+</div>
+    
     <h3>Chat</h3>
 {% for message in messages %}
     {% if message.username == current_user %}

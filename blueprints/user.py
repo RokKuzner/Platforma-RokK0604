@@ -1,5 +1,6 @@
 from flask import Blueprint, request, redirect, render_template, url_for, session, flash
 import database as db
+from decorators.user import login_required
 
 user_bp = Blueprint('user',
                     __name__,
@@ -17,7 +18,7 @@ def registration():
         if db.user_exists(username, email):
             # opzoorilo da user obstaja
             flash("Username or email alreay in use.")
-            
+
         else:
             db.add_user(username, email, password)
             session["logged_in"] = True
@@ -44,7 +45,9 @@ def login():
 
     return render_template("/user/login.html", hide_title=True)
 
+
 @user_bp.route('/logout', methods=["GET"])
+@login_required
 def logout():
     session["logged_in"] = False
     session["current_user"] = None
