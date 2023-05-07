@@ -14,9 +14,7 @@ let next_player = "..."
 let player_x = "..."
 let player_o = "..."
 
-
 let ended
-
 
 function setup() {
     createCanvas(boardWidth, boardHeight + 200);
