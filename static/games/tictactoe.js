@@ -134,14 +134,19 @@ function drawGame(game) {
 function drawText() {
     textSize(24)
     textAlign(CENTER)
-    text("Igralec X: " + player_x, boardWidth / 2, boardHeight + 50)
-    text("Igralec O: " + player_o, boardWidth / 2, boardHeight + 80)
-    // if next player == current_player
-    if (next_player == current_user) {
-        text("Ti si na vrsti!", boardWidth / 2, boardHeight + 110)
+    if (ended != 1) {
+      text("Igralec X: " + player_x, boardWidth / 2, boardHeight + 50)
+      text("Igralec O: " + player_o, boardWidth / 2, boardHeight + 80)
+      // if next player == current_player
+      if (next_player == current_user) {
+          text("Ti si na vrsti!", boardWidth / 2, boardHeight + 110)
+      } else {
+           text("Na vrsti je: " + next_player, boardWidth / 2, boardHeight + 110)   
+      }
     } else {
-         text("Na vrsti je: " + next_player, boardWidth / 2, boardHeight + 110)   
+      text("Game over!", boardWidth / 2, boardHeight + 50)
     }
+    
 }
 
 function drawWinner(start, stop) {
@@ -185,4 +190,5 @@ console.log("TEST 2: " + game_id)
 
 setInterval(async function () {
   await getTictactoe();
+  console.log(ended);
 }, 1000);
