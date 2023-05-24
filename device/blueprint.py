@@ -27,6 +27,7 @@ def list_tictactoe(device_id):
         return "Unknown device id", 400
 
     games = ddb.list_available_games(device["user"])
+    print('Games:', games)
     return {"games": games, "device_info": device}
 
 
